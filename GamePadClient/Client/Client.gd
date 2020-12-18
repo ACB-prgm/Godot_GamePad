@@ -1,4 +1,4 @@
-extends Control
+extends TextureRect
 
 const SERVER_PORT = 31416
 const MAX_PLAYERS = 4
@@ -6,19 +6,14 @@ const MAX_PLAYERS = 4
 var ip_adress = '192.168.86.43'
 var _id = null
 var connected = false
-var players = {}
 
 
 func _ready():
-#	for address in IP.get_local_addresses():
-#		if '192' in address:
-#			ip_adress = address
-#			break
-	
-	get_tree().connect("network_peer_connected", self, "on_network_peer_connected")
-	get_tree().connect("network_peer_disconnected", self, "on_network_peer_disconnected")
+# warning-ignore:return_value_discarded
 	get_tree().connect("connected_to_server", self, "on_connected_to_server")
+# warning-ignore:return_value_discarded
 	get_tree().connect("connection_failed", self, "on_connection_failed")
+# warning-ignore:return_value_discarded
 	get_tree().connect("server_disconnected", self, "on_server_disconnected")
 	
 	join_server()
@@ -32,14 +27,6 @@ func join_server():
 
 func quit_game():
 	get_tree().set_network_peer(null)
-	players.clear()
-
-
-func on_network_peer_connected(id):
-	self._id = id
-
-func on_network_peer_disconnected(id):
-	pass
 
 
 func on_connected_to_server():
