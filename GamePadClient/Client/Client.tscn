@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Client/Client.gd" type="Script" id=1]
+[ext_resource path="res://Buttons/Dpad.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Images/Background.png" type="Texture" id=3]
+[ext_resource path="res://Buttons/SingleLetterTouchScreenButton.tscn" type="PackedScene" id=4]
+
+[node name="GamePad" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BakcgroundTextureRect" type="TextureRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0.6 )
+show_behind_parent = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -960.0
+margin_top = -540.0
+margin_right = 960.0
+margin_bottom = 540.0
+mouse_filter = 2
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AButton" parent="BakcgroundTextureRect" instance=ExtResource( 4 )]
+position = Vector2( 1463.28, 322.631 )
+
+[node name="BButton" parent="BakcgroundTextureRect" instance=ExtResource( 4 )]
+position = Vector2( 1252.77, 568.608 )
+button = "B"
+
+[node name="Dpad" parent="BakcgroundTextureRect" instance=ExtResource( 2 )]
+margin_left = 393.163
+margin_top = 549.747
+margin_right = 393.163
+margin_bottom = 549.747
+[connection signal="button_pressed" from="BakcgroundTextureRect/AButton" to="." method="_on_Button_button_pressed"]
+[connection signal="button_released" from="BakcgroundTextureRect/AButton" to="." method="_on_Button_button_released"]
+[connection signal="button_pressed" from="BakcgroundTextureRect/BButton" to="." method="_on_Button_button_pressed"]
+[connection signal="button_released" from="BakcgroundTextureRect/BButton" to="." method="_on_Button_button_released"]
+[connection signal="direction_pressed" from="BakcgroundTextureRect/Dpad" to="." method="_on_Dpad_direction_pressed"]
+[connection signal="direction_released" from="BakcgroundTextureRect/Dpad" to="." method="_on_Dpad_direction_released"]

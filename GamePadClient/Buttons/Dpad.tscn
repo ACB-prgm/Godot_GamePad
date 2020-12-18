@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Buttons/Dpad.gd" type="Script" id=1]
+[ext_resource path="res://Images/DpadButton_Unpressed.png" type="Texture" id=2]
+[ext_resource path="res://Images/DpadButton_Pressed.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 120, 130 )
+
+[node name="Dpad" type="Control"]
+margin_right = 64.0
+margin_bottom = 64.0
+rect_scale = Vector2( 6, 6 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RightButton" type="TouchScreenButton" parent="."]
+position = Vector2( 32, -22.5 )
+scale = Vector2( 0.2, 0.2 )
+normal = ExtResource( 2 )
+pressed = ExtResource( 3 )
+shape = SubResource( 1 )
+passby_press = true
+
+[node name="Leftbutton" type="TouchScreenButton" parent="."]
+position = Vector2( 13, 22.5 )
+rotation = 3.14159
+scale = Vector2( 0.2, 0.2 )
+normal = ExtResource( 2 )
+pressed = ExtResource( 3 )
+shape = SubResource( 1 )
+passby_press = true
+
+[node name="DownButton" type="TouchScreenButton" parent="."]
+position = Vector2( 44.833, 9.5 )
+rotation = 1.5708
+scale = Vector2( 0.2, 0.2 )
+normal = ExtResource( 2 )
+pressed = ExtResource( 3 )
+shape = SubResource( 1 )
+passby_press = true
+
+[node name="UpButton" type="TouchScreenButton" parent="."]
+position = Vector2( 0, -9.5 )
+rotation = -1.5708
+scale = Vector2( 0.2, 0.2 )
+normal = ExtResource( 2 )
+pressed = ExtResource( 3 )
+shape = SubResource( 1 )
+passby_press = true
+[connection signal="pressed" from="RightButton" to="." method="_on_RightButton_pressed"]
+[connection signal="released" from="RightButton" to="." method="_on_RightButton_released"]
+[connection signal="pressed" from="Leftbutton" to="." method="_on_Leftbutton_pressed"]
+[connection signal="released" from="Leftbutton" to="." method="_on_Leftbutton_released"]
+[connection signal="pressed" from="DownButton" to="." method="_on_DownButton_pressed"]
+[connection signal="released" from="DownButton" to="." method="_on_DownButton_released"]
+[connection signal="pressed" from="UpButton" to="." method="_on_UpButton_pressed"]
+[connection signal="released" from="UpButton" to="." method="_on_UpButton_released"]
