@@ -1,33 +1,53 @@
 extends Control
 
 
-signal direction_pressed(direction)
-signal direction_released(direction)
+signal input_direction_calcululated(direction)
+
+var input_vector = Vector2(0,0)
+var right = 0
+var left = 0
+var down = 0
+var up = 0
+
+
+func calculate_input():
+	input_vector.y = down - up
+	input_vector.x = right - left
+	input_vector = input_vector.normalized()
+	emit_signal("input_direction_calcululated", input_vector)
 
 
 func _on_RightButton_pressed():
-	emit_signal("direction_pressed", 'right')
+	right = 1
+	calculate_input()
 
 func _on_RightButton_released():
-	emit_signal("direction_released", 'right')
+	right = 0
+	calculate_input()
 
 
 func _on_Leftbutton_pressed():
-	emit_signal("direction_pressed", 'left')
+	left = 1
+	calculate_input()
 
 func _on_Leftbutton_released():
-	emit_signal("direction_released", 'left')
+	left = 0
+	calculate_input()
 
 
 func _on_DownButton_pressed():
-	emit_signal("direction_pressed", 'down')
+	down = 1
+	calculate_input()
 
 func _on_DownButton_released():
-	emit_signal("direction_released", 'down')
+	down = 0
+	calculate_input()
 
 
 func _on_UpButton_pressed():
-	emit_signal("direction_pressed", 'up')
+	up = 1
+	calculate_input()
 
 func _on_UpButton_released():
-	emit_signal("direction_released", 'up')
+	up = 0
+	calculate_input()

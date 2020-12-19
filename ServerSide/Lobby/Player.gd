@@ -1,26 +1,23 @@
 extends KinematicBody2D
 
+
+const MAX_SPEED = 400
+const ACCELERATION = 40
 var speed = 400  # speed in pixels/sec
 var velocity = Vector2.ZERO
 
-var right = false
-var left = false
-var up = false
-var down = false
+var input_vector = Vector2.ZERO
 var A = false
 var B = false
 
 
-func get_input(delta):
-	velocity = Vector2.ZERO
-	if right:
-		velocity.x += 1
-	if left:
-		velocity.x -= 1
-	if down:
-		velocity.y += 1
-	if up:
-		velocity.y -= 1
+func get_input():
+	if input_vector != Vector2.ZERO:
+		velocity += input_vector * ACCELERATION
+		velocity = velocity.clamped(MAX_SPEED)
+#		velocity = velocity.normalized() * speed
+	else:
+		velocity = velocity.move_toward(Vector2.ZERO, ACCELERATION)
 	
 	if A:
 		set_modulate(Color(0,1,1,1))
@@ -29,8 +26,7 @@ func get_input(delta):
 	else:
 		set_modulate(Color(1,1,1,1))
 
-	velocity = velocity.normalized() * speed
 
-func _physics_process(delta):
-	get_input(delta)
+func _physics_process(_delta):
+	get_input()
 	velocity = move_and_slide(velocity)

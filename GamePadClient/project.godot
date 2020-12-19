@@ -16,10 +16,14 @@ _global_script_class_icons={
 [application]
 
 config/name="Game Pad Client"
-run/main_scene="res://Client/Client.tscn"
+run/main_scene="res://JoinServer/JoinServerControl.tscn"
 boot_splash/image="res://Images/Background.png"
 boot_splash/bg_color=Color( 0.101961, 0.101961, 0.12549, 1 )
 config/icon="res://icon.png"
+
+[autoload]
+
+Client="*res://Client/Client.gd"
 
 [display]
 
