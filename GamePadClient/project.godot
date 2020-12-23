@@ -8,11 +8,6 @@
 
 config_version=4
 
-_global_script_classes=[  ]
-_global_script_class_icons={
-
-}
-
 [application]
 
 config/name="Game Pad Client"
@@ -24,6 +19,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Client="*res://Client/Client.gd"
+UdpBroadcast="*res://UDP_Broadcast.gd"
 
 [display]
 

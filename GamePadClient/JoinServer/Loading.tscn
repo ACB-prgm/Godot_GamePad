@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Images/Loading.png" type="Texture" id=1]
+[ext_resource path="res://JoinServer/Loading.gd" type="Script" id=2]
+[ext_resource path="res://Images/Shadow.png" type="Texture" id=3]
+
+[node name="Loading" type="TextureRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -175.0
+margin_top = -175.0
+margin_right = 175.0
+margin_bottom = 175.0
+rect_pivot_offset = Vector2( 175, 175 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0.5 )
+show_behind_parent = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -200.0
+margin_right = 200.0
+margin_bottom = 200.0
+rect_scale = Vector2( 1.80454, 1.80454 )
+rect_pivot_offset = Vector2( 200, 200 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

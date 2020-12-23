@@ -3,8 +3,8 @@ extends Control
 const SERVER_PORT = 31416
 const MAX_PLAYERS = 4
 
-var ip_adress = '192.168.1.132'
-#var ip_adress = '127.0.0.1'
+#var ip_address = '192.168.1.208'
+var host_ip_address = null
 var _id = null
 var connected = false
 
@@ -19,14 +19,17 @@ func _ready():
 
 
 func join_server():
-	var host = NetworkedMultiplayerENet.new()
-	var ERR = host.create_client(ip_adress, SERVER_PORT)
-	get_tree().set_network_peer(host)
+	if host_ip_address:
+		var host = NetworkedMultiplayerENet.new()
+		var ERR = host.create_client(host_ip_address, SERVER_PORT)
+		get_tree().set_network_peer(host)
 
-	if ERR == OK:
-		return true
+		if ERR == OK:
+			return true
+		else:
+			return false
 	else:
-		return false
+		print('No Host IP Adress')
 
 
 func quit_game():
@@ -34,10 +37,13 @@ func quit_game():
 
 
 func on_connected_to_server():
+	print('Connected')
 	connected = true
+
 
 func on_connection_failed():
 	print('connection failure')
+
 
 func on_server_disconnected():
 	print('disconnected from server')

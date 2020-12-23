@@ -16,8 +16,13 @@ _global_script_class_icons={
 [application]
 
 config/name="ServerSide"
-run/main_scene="res://CreateServer.tscn"
+run/main_scene="res://Lobby/GamePad.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+UdpBroadcast="*res://UDP_Broadcast.gd"
+Server="*res://Server.gd"
 
 [rendering]
 

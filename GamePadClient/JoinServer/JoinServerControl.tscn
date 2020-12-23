@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Images/Background.png" type="Texture" id=1]
 [ext_resource path="res://Buttons/Font/Arial Rounded Bold.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://JoinServer/JoinServerControl.gd" type="Script" id=3]
+[ext_resource path="res://JoinServer/Loading.tscn" type="PackedScene" id=4]
+[ext_resource path="res://JoinServer/Message.tscn" type="PackedScene" id=5]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -63,5 +65,14 @@ __meta__ = {
 }
 
 [node name="ChangeSceneTween" type="Tween" parent="."]
+
+[node name="ConnectingTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="Loading" parent="." instance=ExtResource( 4 )]
+
+[node name="Message" parent="." instance=ExtResource( 5 )]
+
 [connection signal="pressed" from="ConnectButton" to="." method="_on_ConnectButton_pressed"]
 [connection signal="tween_all_completed" from="ChangeSceneTween" to="." method="_on_ChangeSceneTween_tween_all_completed"]
+[connection signal="timeout" from="ConnectingTimer" to="." method="_on_ConnectingTimer_timeout"]

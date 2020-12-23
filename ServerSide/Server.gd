@@ -1,17 +1,15 @@
-extends Node
+extends Control
 
 const SERVER_PORT = 31416
 const MAX_PLAYERS = 4
 
 #var ip_adress = '127.0.0.1'
-var ip_adress = '192.168.1.132'
+var ip_adress = '192.168.1.208'
 var player = preload("res://Lobby/Player.tscn")
 var clients = {}
 
 
 func _ready():
-#	get_IP()
-	
 	for address in IP.get_local_addresses():
 		if '192' in address:
 			ip_adress = address
@@ -21,35 +19,26 @@ func _ready():
 	get_tree().connect("network_peer_connected", self, "on_network_peer_connected")
 # warning-ignore:return_value_discarded
 	get_tree().connect("network_peer_disconnected", self, "on_network_peer_disconnected")
-	
-	start_server()
 
 
 func start_server():
 	var host = NetworkedMultiplayerENet.new()
 	host.create_server(SERVER_PORT, MAX_PLAYERS)
 	get_tree().set_network_peer(host)
+	print('Server Started')
 
-
-func get_IP():
-	var upnp=UPNP.new()
-	upnp.discover()
-	upnp.add_port_mapping(SERVER_PORT)
-	prints(upnp.get_device_count(), upnp.query_external_address())
-	upnp.delete_port_mapping(SERVER_PORT)
+func stop_server():
+	get_tree().set_network_peer(null)
+	clients.clear()
+	print('server stopped and peers cleared')
 
 
 func allow_connections():
 	get_tree().set_refuse_new_network_connections(false)
 
-
 func disallow_connections():
 	get_tree().set_refuse_new_network_connections(true)
 
-
-func quit_game():
-	get_tree().set_network_peer(null)
-	clients.clear()
 
 func on_network_peer_connected(id):
 	print('client %s connected!' % id)
@@ -72,17 +61,9 @@ func on_network_peer_disconnected(id):
 	clients.erase(id)
 
 
-remote func key_pressed(key):
-	var id = get_tree().get_rpc_sender_id()
-	var current_player = clients[id]
-	current_player.set(key, true)
-
-remote func key_released(key):
-	var id = get_tree().get_rpc_sender_id()
-	var current_player = clients[id]
-	current_player.set(key, false)
-
-remote func direction_calculated(direction):
-	var id = get_tree().get_rpc_sender_id()
-	var current_player = clients[id]
-	current_player.input_vector = direction
+func _notification(what):
+	# STOPS SERVER AND UDP BROADCAST AND CLOSES OPEN PORTS
+	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST or what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
+		Server.stop_server()
+		UdpBroadcast.stop_broadcast()
+		get_tree().quit() # default behavior
