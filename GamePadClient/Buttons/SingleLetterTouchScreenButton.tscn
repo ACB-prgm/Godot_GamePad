@@ -13,13 +13,20 @@ size = 142
 use_filter = true
 font_data = ExtResource( 3 )
 
-[node name="TouchScreenButton" type="TouchScreenButton"]
+[node name="Control" type="Control"]
+margin_right = 250.0
+margin_bottom = 250.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+button = "A"
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
 normal = ExtResource( 2 )
 pressed = ExtResource( 1 )
 shape = SubResource( 1 )
 passby_press = true
-script = ExtResource( 4 )
-button = "A"
 
 [node name="Label" type="Label" parent="."]
 anchor_left = 0.5
@@ -33,8 +40,11 @@ margin_bottom = 82.5
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "A"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="." to="." method="_on_TouchScreenButton_pressed"]
-[connection signal="released" from="." to="." method="_on_TouchScreenButton_released"]
+
+[connection signal="pressed" from="TouchScreenButton" to="." method="_on_TouchScreenButton_pressed"]
+[connection signal="released" from="TouchScreenButton" to="." method="_on_TouchScreenButton_released"]

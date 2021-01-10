@@ -19,6 +19,11 @@ func get_server_ip():
 		Client.join_server()
 
 
+func stop_broadcast():
+	print('stopping UDP Broadcast')
+	set_process(false)
+
+
 func _process(_delta):
 	if !udp_connected:
 		# Try to contact server
@@ -26,7 +31,7 @@ func _process(_delta):
 		udp.put_packet("Contacted Host".to_utf8())
 	
 	if udp.get_available_packet_count() > 0:
-		print("Connected: %s" % udp.get_packet().get_string_from_utf8())
+		print(udp.get_packet().get_string_from_utf8())
 		Client.host_ip_address = udp.get_packet_ip()
 		Client.join_server()
 		

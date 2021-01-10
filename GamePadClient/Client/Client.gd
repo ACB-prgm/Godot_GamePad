@@ -37,7 +37,7 @@ func quit_game():
 
 
 func on_connected_to_server():
-	print('Connected')
+	print('Connected To Server')
 	connected = true
 
 
@@ -46,4 +46,7 @@ func on_connection_failed():
 
 
 func on_server_disconnected():
-	print('disconnected from server')
+	print('Disconnected From Server')
+	connected = false
+# warning-ignore:return_value_discarded
+	get_tree().change_scene("res://JoinServer/JoinServerControl.tscn")

@@ -8,16 +8,23 @@
 points = PoolVector2Array( -130, 80, -40, 170, 120, 130, 120, -130, -40, -170, -130, -80 )
 
 [node name="Dpad" type="Control"]
-margin_right = 64.0
-margin_bottom = 64.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -62.5
+margin_top = -62.5
+margin_right = 62.5
+margin_bottom = 62.5
 rect_scale = Vector2( 6, 6 )
+rect_pivot_offset = Vector2( 62.5, 62.5 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="RightButton" type="TouchScreenButton" parent="."]
-position = Vector2( 32, -22.5 )
+position = Vector2( 71.8002, 39.8002 )
 scale = Vector2( 0.2, 0.2 )
 normal = ExtResource( 2 )
 pressed = ExtResource( 3 )
@@ -25,7 +32,7 @@ shape = SubResource( 1 )
 passby_press = true
 
 [node name="Leftbutton" type="TouchScreenButton" parent="."]
-position = Vector2( 13, 22.5 )
+position = Vector2( 52.8001, 84.8002 )
 rotation = 3.14159
 scale = Vector2( 0.2, 0.2 )
 normal = ExtResource( 2 )
@@ -34,7 +41,7 @@ shape = SubResource( 1 )
 passby_press = true
 
 [node name="DownButton" type="TouchScreenButton" parent="."]
-position = Vector2( 44.833, 9.5 )
+position = Vector2( 84.6333, 71.8001 )
 rotation = 1.5708
 scale = Vector2( 0.2, 0.2 )
 normal = ExtResource( 2 )
@@ -43,13 +50,14 @@ shape = SubResource( 1 )
 passby_press = true
 
 [node name="UpButton" type="TouchScreenButton" parent="."]
-position = Vector2( 0, -9.5 )
+position = Vector2( 39.8001, 52.8002 )
 rotation = -1.5708
 scale = Vector2( 0.2, 0.2 )
 normal = ExtResource( 2 )
 pressed = ExtResource( 3 )
 shape = SubResource( 1 )
 passby_press = true
+
 [connection signal="pressed" from="RightButton" to="." method="_on_RightButton_pressed"]
 [connection signal="released" from="RightButton" to="." method="_on_RightButton_released"]
 [connection signal="pressed" from="Leftbutton" to="." method="_on_Leftbutton_pressed"]

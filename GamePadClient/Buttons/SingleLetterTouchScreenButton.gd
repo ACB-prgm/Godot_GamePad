@@ -1,4 +1,4 @@
-extends TouchScreenButton
+extends Control
 
 
 signal button_pressed(button)
@@ -12,9 +12,9 @@ export var button = ''
 onready var label = $Label
 
 
-func _ready():
+func set_button(button_):
+	self.button = button_
 	label.set_text(button)
-
 
 func _on_TouchScreenButton_pressed():
 	emit_signal("button_pressed", button)

@@ -29,6 +29,8 @@ func start_server():
 
 func stop_server():
 	get_tree().set_network_peer(null)
+	for id in clients.keys():
+		clients[id].queue_free()
 	clients.clear()
 	print('server stopped and peers cleared')
 

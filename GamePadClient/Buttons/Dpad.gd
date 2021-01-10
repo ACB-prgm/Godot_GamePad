@@ -1,7 +1,7 @@
 extends Control
 
 
-signal input_direction_calcululated(direction)
+signal input_direction_calculated(direction, intensity)
 
 var input_vector = Vector2(0,0)
 var right = 0
@@ -10,11 +10,17 @@ var down = 0
 var up = 0
 
 
+func _ready():
+	# Centers itself in its parent control
+	set_anchors_preset(Control.PRESET_CENTER)
+	set_margins_preset(Control.PRESET_CENTER, Control.PRESET_MODE_KEEP_SIZE)
+
+
 func calculate_input():
 	input_vector.y = down - up
 	input_vector.x = right - left
 	input_vector = input_vector.normalized()
-	emit_signal("input_direction_calcululated", input_vector)
+	emit_signal("input_direction_calculated", input_vector, 1)
 
 
 func _on_RightButton_pressed():

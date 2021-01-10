@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://GamePad/SideControl.gd" type="Script" id=1]
+
+[node name="SideControl" type="Control"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 150.0
+margin_top = -375.0
+margin_right = 900.0
+margin_bottom = 375.0
+rect_pivot_offset = Vector2( 375, 375 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

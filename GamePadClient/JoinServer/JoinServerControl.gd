@@ -43,6 +43,7 @@ func _on_ConnectingTimer_timeout():
 		connection_attempts = 0
 		connectingTimer.stop()
 		loading_img.stop()
+		UdpBroadcast.stop_broadcast()
 
 
 func change_scene():
@@ -56,5 +57,5 @@ func change_scene():
 func _on_ChangeSceneTween_tween_all_completed():
 	if faded_in:
 # warning-ignore:return_value_discarded
-		get_tree().change_scene("res://GamePad.tscn")
+		get_tree().change_scene("res://GamePad/GamePad.tscn")
 	faded_in = true

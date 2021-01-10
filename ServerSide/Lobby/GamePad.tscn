@@ -35,7 +35,7 @@ margin_top = 16.0
 margin_right = -16.0
 margin_bottom = 60.0
 custom_fonts/font = SubResource( 1 )
-text = "Start Server"
+text = "Stop Server"
 __meta__ = {
 "_edit_use_anchors_": false
 }

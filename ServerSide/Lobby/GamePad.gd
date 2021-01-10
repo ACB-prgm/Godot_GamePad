@@ -11,18 +11,18 @@ func _on_StopServerButton_pressed():
 	UdpBroadcast.stop_broadcast()
 
 
-remote func key_pressed(key):
+remote func _on_button_pressed(side, button):
 	var id = get_tree().get_rpc_sender_id()
 	var current_player = Server.clients[id]
-	current_player.set(key, true)
+	current_player.set(button, true)
 
-remote func key_released(key):
+remote func _on_button_released(side, button):
 	var id = get_tree().get_rpc_sender_id()
 	var current_player = Server.clients[id]
-	current_player.set(key, false)
+	current_player.set(button, false)
 
 
-remote func direction_calculated(direction):
+remote func _on_input_direction_calculated(side, direction, intensity):
 	var id = get_tree().get_rpc_sender_id()
 	var current_player = Server.clients[id]
 	current_player.input_vector = direction
