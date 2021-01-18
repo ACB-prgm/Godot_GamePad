@@ -10,7 +10,9 @@ var base_center
 
 var input_vector = Vector2.ZERO
 var intensity = 0
+var current_touch_index = null
 var held = false
+var held_check  = false
 var calced = false
 
 
@@ -21,17 +23,21 @@ func _ready():
 
 func _input(event):
 	if held:
-		if event is InputEventScreenDrag or event in InputEventScreenTouch and event.is_pressed():
-			var joy_pos_desired = event.position - joystick_center
-			joystickButton.set_global_position(joy_pos_desired)
-			
-			if joy_pos_desired.distance_to(base_center) > base_boundary:
-				joystickButton.set_position(base_center.direction_to(joy_pos_desired) * base_boundary + joystick_center)
-			
-			calculate_input()
-			
-			intensity = joystickButton.global_position.distance_to(base_center)/base_boundary
-			emit_signal("input_direction_calculated", input_vector, intensity)
+		if !held_check:
+			held_check = true
+			current_touch_index = event.get_index()
+		
+		if (event is InputEventScreenDrag or event is InputEventScreenTouch) and event.get_index() == current_touch_index:
+				var joy_pos_desired = event.position - joystick_center
+				joystickButton.set_global_position(joy_pos_desired)
+				
+				if joy_pos_desired.distance_to(base_center) > base_boundary:
+					joystickButton.set_position(base_center.direction_to(joy_pos_desired) * base_boundary + joystick_center)
+				
+				calculate_input()
+				
+				intensity = joystickButton.global_position.distance_to(base_center)/base_boundary
+				emit_signal("input_direction_calculated", input_vector, intensity)
 
 
 func _on_TouchScreenButton_released():
@@ -39,6 +45,7 @@ func _on_TouchScreenButton_released():
 	calculate_input()
 	emit_signal("input_direction_calculated", Vector2.ZERO, 0)
 	held = false
+	held_check = false
 
 func _on_TouchScreenButton_pressed():
 	held = true

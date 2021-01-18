@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "EditorProperty",
+"class": "MyIntEditor",
+"language": "GDScript",
+"path": "res://addons/GamePad_Plugin/TestEditorProperty.gd"
+} ]
+_global_script_class_icons={
+"MyIntEditor": ""
+}
+
 [application]
 
 config/name="Plugin Test"
@@ -15,7 +25,7 @@ config/icon="res://icon.png"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "GamePad Plugin" )
+enabled=PoolStringArray( "GamePad_Plugin" )
 
 [rendering]
 

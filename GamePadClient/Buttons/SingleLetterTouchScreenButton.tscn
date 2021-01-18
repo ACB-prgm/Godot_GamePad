@@ -2,11 +2,11 @@
 
 [ext_resource path="res://Images/SingleButton_Pressed.png" type="Texture" id=1]
 [ext_resource path="res://Images/SingleButton_Unpressed.png" type="Texture" id=2]
-[ext_resource path="res://Buttons/Font/Arial Rounded Bold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Font/Arial Rounded Bold.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Buttons/SingleLetterTouchScreenButton.gd" type="Script" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 130.0
+radius = 170.0
 
 [sub_resource type="DynamicFont" id=2]
 size = 142

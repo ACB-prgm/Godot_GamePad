@@ -12,11 +12,11 @@ var joystick = preload("res://Buttons/Joystick.tscn")
 
 
 func _ready():
-	leftSideControl.spawn_control(joystick)
-	rightSideControl.spawn_control(singleButton, 'bottom', 'B')
-	rightSideControl.spawn_control(singleButton, 'right', 'A')
-	rightSideControl.spawn_control(singleButton, 'left', 'X')
-	rightSideControl.spawn_control(singleButton, 'top', 'Y')
+	leftSideControl.spawn_control(joystick, true)
+	rightSideControl.spawn_control(singleButton, false, 'bottom', 'B')
+	rightSideControl.spawn_control(singleButton, false, 'right', 'A')
+	rightSideControl.spawn_control(singleButton, false, 'left', 'X')
+	rightSideControl.spawn_control(singleButton, false, 'top', 'Y')
 	
 	for child in self.get_children():
 		if child.get('modulate') and child != $BackgroundTextureRect:
@@ -37,7 +37,14 @@ func _on_button_released(side, button):
 			rpc_unreliable_id(1, '_on_button_released', side, button)
 
 
-func _on_direction_calculated(side, direction, intensity):
+func _on_direction_calculated(side, direction, intensity, is_joystick):
 	if Client.connected:
-		for rpc in rpcs_to_send:
-			rpc_unreliable_id(1, '_on_input_direction_calculated', side, direction, intensity)
+		if is_joystick: #sends less packets because the joystick sends many packets in and of itself
+			if direction == Vector2.ZERO: # sends extra packets when stopping only because these are more likely to be noticed if dropped
+				for rpc in rpcs_to_send:
+					rpc_unreliable_id(1, '_on_input_direction_calculated', side, direction, intensity)
+			else:
+				rpc_unreliable_id(1, '_on_input_direction_calculated', side, direction, intensity)
+		else:
+			for rpc in rpcs_to_send:
+				rpc_unreliable_id(1, '_on_input_direction_calculated', side, direction, intensity)

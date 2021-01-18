@@ -10,6 +10,8 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+Left_Side = "Joystick"
+Right_Side = "Joystick"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_left = 0.5

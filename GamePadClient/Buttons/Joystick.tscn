@@ -6,11 +6,9 @@
 [ext_resource path="res://Buttons/Joystick.gd" type="Script" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 125.0
+radius = 200.0
 
-[node name="Joystick" type="TextureRect" groups=[
-"joystick",
-]]
+[node name="Joystick" type="TextureRect"]
 margin_right = 500.0
 margin_bottom = 500.0
 rect_pivot_offset = Vector2( 250, 250 )

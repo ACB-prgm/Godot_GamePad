@@ -39,5 +39,6 @@ text = "Stop Server"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="pressed" from="StartServerButton" to="." method="_on_StartServerButton_pressed"]
 [connection signal="pressed" from="StopServerButton" to="." method="_on_StopServerButton_pressed"]

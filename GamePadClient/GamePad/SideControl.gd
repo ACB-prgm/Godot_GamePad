@@ -3,7 +3,7 @@ extends Control
 
 signal button_pressed(side, button)
 signal button_released(side, button)
-signal input_direction_calculated(side, direction, intensity)
+signal input_direction_calculated(side, direction, intensity, is_joystick)
 
 export (
 	String,
@@ -11,8 +11,9 @@ export (
 	'right'
 	) var side
 
+var has_joystick = false
 
-func spawn_control(control, anchor=null, button=null):
+func spawn_control(control, joystick=null, anchor=null, button=null):
 	var ins_control = control.instance()
 	self.add_child(ins_control)
 	
@@ -37,6 +38,8 @@ func spawn_control(control, anchor=null, button=null):
 	
 	else:
 		ins_control.connect('input_direction_calculated', self, '_on_direction_calculated')
+		if joystick:
+			has_joystick = true
 
 
 func _on_button_pressed(button):
@@ -46,4 +49,4 @@ func _on_button_released(button):
 	emit_signal("button_released", self.side, button)
 
 func _on_direction_calculated(direction, intensity):
-	emit_signal("input_direction_calculated", side, direction, intensity)
+	emit_signal("input_direction_calculated", side, direction, intensity, has_joystick)
