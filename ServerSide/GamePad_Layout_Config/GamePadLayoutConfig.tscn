@@ -6,12 +6,12 @@
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -0.461624
+margin_right = -0.461609
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-Left_Side = "Joystick"
-Right_Side = "Joystick"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_left = 0.5
@@ -57,3 +57,6 @@ margin_bottom = 540.0
 rect_scale = Vector2( 0.33, 0.33 )
 rect_pivot_offset = Vector2( 960, 540 )
 texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
