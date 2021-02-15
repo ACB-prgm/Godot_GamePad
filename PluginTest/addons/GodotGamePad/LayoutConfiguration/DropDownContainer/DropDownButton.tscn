@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/GodotGamePad/LayoutConfiguration/AddOn_Images/GuiOptionArrow Side.png" type="Texture" id=1]
+[ext_resource path="res://addons/GodotGamePad/LayoutConfiguration/DropDownContainer/ToolButton.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.2, 0.223529, 0.278431, 1 )
+
+[node name="PanelContainer" type="PanelContainer"]
+margin_right = 161.0
+margin_bottom = 22.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="ToolButton" type="ToolButton" parent="."]
+margin_right = 161.0
+margin_bottom = 22.0
+custom_colors/font_color_disabled = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color_pressed = Color( 0.878431, 0.878431, 0.878431, 1 )
+toggle_mode = true
+text = "No Container Name Set"
+icon = ExtResource( 1 )
+align = 0
+expand_icon = true
+script = ExtResource( 2 )
+
+[connection signal="toggled" from="ToolButton" to="ToolButton" method="_on_ToolButton_toggled"]

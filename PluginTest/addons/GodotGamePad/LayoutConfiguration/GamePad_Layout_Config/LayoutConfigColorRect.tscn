@@ -23,6 +23,9 @@ margin_left = 42.0
 margin_top = -125.0
 margin_right = 292.0
 margin_bottom = 125.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="RightControl" type="Control" parent="."]
 anchor_left = 1.0

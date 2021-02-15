@@ -6,6 +6,7 @@ onready var children_container = $VBoxContainer
 onready var button_label = $VBoxContainer/Label
 onready var enabled_button = $VBoxContainer/EnabledCheckBox
 onready var button_text_entry = $VBoxContainer/ButtonTextLineEdit
+onready var colorSelector = $VBoxContainer/ColorSelector
 
 var controller_location: String = "NA"
 var initialized = false
@@ -15,7 +16,8 @@ var button_attributes: Dictionary = {
 	"anchor_location": null,
 	"button_text_maxl_length": 1,
 	"enabled": true,
-	"button_text": "A"
+	"button_text": "A",
+	"color_unpressed": Color(1,1,1,1)
 }
 
 
@@ -47,18 +49,20 @@ func _ready():
 	
 	# Sets the user's past changes if any were made
 	var buttons = UI_Builder.load_layout_info().get("%s_buttons" % [controller_location])
-	var button = exists_in_buttons(buttons, self.button_attributes)
 	
+	var button = exists_in_buttons(buttons, self.button_attributes)
 	if button:
 		button_attributes = button
 		enabled_button.set_pressed(true)
+		button_text_entry.set_text(button.get("button_text"))
+		colorSelector.set_color(button.get("color_unpressed"))
 
 
 func exists_in_buttons(buttons, what):
 	for button in buttons:
 			if button.get("child_number") == what.get("child_number"):
 				return button
-		
+
 	return false
 
 
@@ -84,4 +88,9 @@ func _on_LineEdit_text_changed(new_text):
 
 func _on_EnabledCheckBox_toggled(button_pressed):
 	button_attributes["enabled"] = button_pressed
+	emit_signal("button_config_changed", button_attributes)
+
+
+func _on_ChildrenContainer_color_changed(color):
+	button_attributes["color_unpressed"] = color
 	emit_signal("button_config_changed", button_attributes)

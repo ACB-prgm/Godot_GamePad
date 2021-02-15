@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/GodotGamePad/LayoutConfiguration/ColorSelector/ColorSelector.gd" type="Script" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.2, 0.231373, 0.309804, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+shadow_size = 5
+
+[node name="ColorSelector" type="HBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 10
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Position2D" type="Position2D" parent="."]
+visible = false
+
+[node name="Label" type="Label" parent="."]
+margin_top = 293.0
+margin_right = 41.0
+margin_bottom = 307.0
+text = "  Color"
+
+[node name="Button" type="Button" parent="."]
+margin_left = 51.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 1 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/disabled = SubResource( 1 )
+custom_styles/normal = SubResource( 1 )
+
+[node name="ColorPickerPopupPanel" type="PopupPanel" parent="."]
+margin_left = 686.0
+margin_right = 1030.0
+margin_bottom = 470.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="ColorPicker" type="ColorPicker" parent="ColorPickerPopupPanel"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 343.0
+margin_bottom = 469.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="focus_exited" from="ColorPickerPopupPanel" to="." method="_on_PopupPanel_focus_exited"]
+[connection signal="color_changed" from="ColorPickerPopupPanel/ColorPicker" to="." method="_on_ColorPicker_color_changed"]

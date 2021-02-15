@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://addons/GodotGamePad/LayoutConfiguration/ButtonConfig/ButtonConfig.gd" type="Script" id=1]
+[ext_resource path="res://addons/GodotGamePad/LayoutConfiguration/ColorSelector/ColorSelector.tscn" type="PackedScene" id=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -35,7 +36,6 @@ valign = 1
 margin_top = 18.0
 margin_right = 1022.0
 margin_bottom = 42.0
-pressed = true
 text = "Enabled"
 
 [node name="ButtonTextLineEdit" type="LineEdit" parent="VBoxContainer"]
@@ -47,5 +47,13 @@ placeholder_text = "Enter Button Text"
 placeholder_alpha = 0.7
 caret_blink = true
 
+[node name="ColorSelector" parent="VBoxContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 74.0
+margin_right = 1022.0
+margin_bottom = 88.0
+
 [connection signal="toggled" from="VBoxContainer/EnabledCheckBox" to="." method="_on_EnabledCheckBox_toggled"]
 [connection signal="text_changed" from="VBoxContainer/ButtonTextLineEdit" to="." method="_on_LineEdit_text_changed"]
+[connection signal="color_changed" from="VBoxContainer/ColorSelector" to="." method="_on_ChildrenContainer_color_changed"]

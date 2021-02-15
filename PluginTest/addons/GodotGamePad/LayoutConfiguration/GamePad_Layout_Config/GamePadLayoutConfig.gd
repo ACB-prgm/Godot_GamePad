@@ -124,6 +124,7 @@ func draw_on_layout(controller_location, layout_control: Control, clear=false) -
 				if button.get("button_type") == "action_buttons":
 					var new_button = UI_Builder.create_layout_action_button(button.get("button_text"))
 					layout_control.add_child(new_button)
+					new_button.set_modulate(button.get("color_unpressed"))
 					new_button.set_anchors_and_margins_preset(UI_Builder.anchor_option_to_layout_preset(button.get("anchor_location").to_lower()), Control.PRESET_MODE_MINSIZE)
 				else:
 					pass
