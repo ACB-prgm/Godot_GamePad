@@ -1,0 +1,60 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "VBoxContainer",
+"class": "DropDownContainer",
+"language": "GDScript",
+"path": "res://addons/GodotGamePad/LayoutConfiguration/DropDownContainer/DropDownContainer.gd"
+}, {
+"base": "EditorProperty",
+"class": "DropDownProperty",
+"language": "GDScript",
+"path": "res://addons/GodotGamePad/LayoutConfiguration/my_inspector_plugin/DropDown.gd"
+}, {
+"base": "Control",
+"class": "GamePadLayout",
+"language": "GDScript",
+"path": "res://addons/GodotGamePad/LayoutConfiguration/GamePad_Layout_Config/GamePadLayoutConfig.gd"
+}, {
+"base": "Node",
+"class": "UI_Builder",
+"language": "GDScript",
+"path": "res://addons/GodotGamePad/UI_builder_functions.gd"
+} ]
+_global_script_class_icons={
+"DropDownContainer": "",
+"DropDownProperty": "",
+"GamePadLayout": "",
+"UI_Builder": ""
+}
+
+[application]
+
+config/name="Plugin_Test"
+run/main_scene="res://ExampleLobby/ExampleLobby.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+UdpBroadcast="*res://addons/GodotGamePad/Networking/UDP_Broadcast.gd"
+Server="*res://addons/GodotGamePad/Networking/Server.gd"
+GamePad="*res://addons/GodotGamePad/Networking/GamePad.tscn"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "GodotGamePad" )
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+environment/default_environment="res://default_env.tres"

@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://addons/GodotGamePad/LayoutConfiguration/DropDownContainer/DropDownContainer.gd" type="Script" id=1]
+[ext_resource path="res://addons/GodotGamePad/LayoutConfiguration/AddOn_Images/GuiOptionArrow Side.png" type="Texture" id=2]
+[ext_resource path="res://addons/GodotGamePad/LayoutConfiguration/DropDownContainer/ToolButton.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.2, 0.223529, 0.278431, 1 )
+
+[node name="VBoxContainer" type="VBoxContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_constants/separation = 10
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+margin_right = 161.0
+margin_bottom = 22.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="ToolButton" type="ToolButton" parent="PanelContainer"]
+margin_right = 161.0
+margin_bottom = 22.0
+custom_colors/font_color_disabled = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color_pressed = Color( 0.878431, 0.878431, 0.878431, 1 )
+toggle_mode = true
+text = "No Container Name Set"
+icon = ExtResource( 2 )
+align = 0
+expand_icon = true
+script = ExtResource( 3 )
+
+[node name="Children_container" type="VBoxContainer" parent="."]
+visible = false
+margin_top = 24.0
+margin_right = 161.0
+margin_bottom = 24.0
+custom_constants/separation = 10
+
+[connection signal="toggled" from="PanelContainer/ToolButton" to="." method="_on_ToolButton_toggled"]
+[connection signal="toggled" from="PanelContainer/ToolButton" to="PanelContainer/ToolButton" method="_on_ToolButton_toggled"]

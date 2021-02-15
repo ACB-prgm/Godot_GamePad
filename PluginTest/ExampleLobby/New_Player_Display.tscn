@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://ExampleLobby/New_player_img/New_Player_outline.png" type="Texture" id=1]
+[ext_resource path="res://addons/GodotGamePad/LayoutConfiguration/Fonts/Arial Rounded Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://ExampleLobby/New_player_img/New_Player_color.png" type="Texture" id=3]
+[ext_resource path="res://ExampleLobby/New_Player_Display.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 17
+font_data = ExtResource( 2 )
+
+[node name="TextureRect" type="TextureRect"]
+margin_right = 255.0
+margin_bottom = 307.0
+texture = ExtResource( 3 )
+expand = true
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = -3.8147e-06
+margin_right = 255.0
+margin_bottom = 307.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 34.0982
+margin_top = 36.7162
+margin_right = 148.098
+margin_bottom = 57.7162
+custom_fonts/font = SubResource( 1 )
+text = "Player 1"
+valign = 1
+
+[node name="Tween" type="Tween" parent="."]
