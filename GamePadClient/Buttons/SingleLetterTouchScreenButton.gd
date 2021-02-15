@@ -1,6 +1,8 @@
 extends Control
 
 
+const is_button = true
+
 signal button_pressed(button)
 signal button_released(button)
 

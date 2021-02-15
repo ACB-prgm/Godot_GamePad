@@ -20,7 +20,7 @@ func get_server_ip():
 
 
 func stop_broadcast():
-	print('stopping UDP Broadcast')
+#	print('stopping UDP Broadcast')
 	set_process(false)
 
 
@@ -31,7 +31,9 @@ func _process(_delta):
 		udp.put_packet("Contacted Host".to_utf8())
 	
 	if udp.get_available_packet_count() > 0:
-		print(udp.get_packet().get_string_from_utf8())
+		var layout = JSON.parse(udp.get_packet().get_string_from_utf8()).result
+		if typeof(layout) == TYPE_DICTIONARY:
+			Client.layout_dict = layout
 		Client.host_ip_address = udp.get_packet_ip()
 		Client.join_server()
 		

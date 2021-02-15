@@ -1,6 +1,8 @@
 extends TextureRect
 
 
+const is_joystick = true
+
 signal input_direction_calculated(direction, intensity)
 
 onready var joystickButton = $TouchScreenButton

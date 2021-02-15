@@ -7,6 +7,7 @@ const MAX_PLAYERS = 4
 var host_ip_address = null
 var _id = null
 var connected = false
+var layout_dict = {}
 
 
 func _ready():
