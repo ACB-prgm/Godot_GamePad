@@ -1,4 +1,4 @@
-# Godot GamePad
+ # Godot GamePad
 
 ![Github_controller_image](https://user-images.githubusercontent.com/63984796/107990013-565b6e00-6f88-11eb-873e-56191d0348a8.png)
 ### Introduction
@@ -10,8 +10,8 @@ ___
 ### For Developers
 > **if you are going to try and build the GamePad Mobile app yourself, you must use Godot 3.2.4 or higher and set Project Settings>Input Devices>Touch Delay = 0.  Otherwise there will be signifficant latency**
 
-As a developer, you can allow your game to work with the gamepad by downloading the [GodotGamePad Plugin](https://github.com/ACB-prgm/Godot_GamePad/tree/main/PluginTest) from this repository and integrating it into your project ([how to install plugins](https://docs.godotengine.org/en/stable/tutorials/plugins/editor/installing_plugins.html)).  This plugin allows you to configure the layout of the controller as shown in the image below to be custom for your game.  This plugin also creates an autoload 
-called [GamePad](https://github.com/ACB-prgm/Godot_GamePad/blob/main/PluginTest/addons/GodotGamePad/Networking/GamePad.gd) that serves as an API for receiving the controller inputs and connecting and managing GamePads.  To understand how to use it, open the script and read the comments. (this will be improved in the future).  There is also currently an [Example Lobby](https://github.com/ACB-prgm/Godot_GamePad/tree/main/PluginTest/ExampleLobby) scene in the **PluginTest** directory that shows how you might go about setting up a scene to connect controllers.
+As a developer, you can allow your game to work with the gamepad by downloading the [GodotGamePad Plugin](https://github.com/ACB-prgm/Godot_GamePad/tree/main/Plugin) from this repository and integrating it into your project ([how to install plugins](https://docs.godotengine.org/en/stable/tutorials/plugins/editor/installing_plugins.html)).  This plugin allows you to configure the layout of the controller as shown in the image below to be custom for your game.  This plugin also creates an autoload 
+called [GamePad](https://github.com/ACB-prgm/Godot_GamePad/blob/main/PluginTest/addons/GodotGamePad/Networking/GamePad.gd) that serves as an API for receiving the controller inputs and connecting and managing GamePads.  To understand how to use it, open the script and read the comments. (this will be improved in the future).  There is also currently an [Example Lobby](https://github.com/ACB-prgm/Godot_GamePad/tree/main/Plugin/ExampleLobby) scene in the **PluginTest** directory that shows how you might go about setting up a scene to connect controllers.
 
 ![Github_plugin_image](https://user-images.githubusercontent.com/63984796/107985163-68d0aa00-6f7e-11eb-9354-33b23a0c3f0b.png)
 
