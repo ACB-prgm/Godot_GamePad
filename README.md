@@ -1,4 +1,4 @@
- # Godot GamePad (1.0.1)
+ # Godot GamePad (v1.0.1)
 
 ![Github_controller_image](https://user-images.githubusercontent.com/63984796/107990013-565b6e00-6f88-11eb-873e-56191d0348a8.png)
 ### Introduction
