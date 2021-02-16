@@ -3,7 +3,7 @@
 ![Github_controller_image](https://user-images.githubusercontent.com/63984796/107990013-565b6e00-6f88-11eb-873e-56191d0348a8.png)
 ### Introduction
 The Godot GamePad is a two-part project that allows players to use their mobile devices as controllers with games made in Godot.  The mobile app will be
-free to download on the Google Play and Apple App stores when it is finished.  The aim of this is project to make local multiplayer games more accessible to players and developers by replacing costly physical controllers with a device available to everyone.
+free to download on the Google Play and Apple App stores when it is finished.  The aim of this project to make local multiplayer games more accessible to players and developers by replacing costly physical controllers with a device available to everyone.
 
 ___
 
