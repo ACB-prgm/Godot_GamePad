@@ -18,10 +18,10 @@ ___
 
 ### Planned Features:
 (√ = added, X = not yet added)
-- √ D-Pad
-- √ Joystick
-- √ Action Buttons
-- X Text Input (enter names or trivia answers)
-- X Square Text Buttons (versatile buttons that are more customizable. Start/menu buttons and trivia buttons are examples)
-- X Steering Wheel (Gyroscope)
-- X Aesthetics Editing (change background color)
+- **√** D-Pad
+- **√** Joystick
+- **√** Action Buttons
+- **X** Text Input (enter names or trivia answers)
+- **X** Square Text Buttons (versatile buttons that are more customizable. Start/menu buttons and trivia buttons are examples)
+- **X** Steering Wheel (Gyroscope)
+- **X** Aesthetics Editing (change background color)
