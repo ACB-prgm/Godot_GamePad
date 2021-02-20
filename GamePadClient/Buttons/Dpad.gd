@@ -3,6 +3,8 @@ extends Control
 
 signal input_direction_calculated(direction, intensity)
 
+const is_directional = true
+
 var input_vector = Vector2(0,0)
 var right = 0
 var left = 0

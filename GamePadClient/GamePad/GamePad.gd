@@ -4,6 +4,7 @@ extends Control
 onready var tween = $Tween
 onready var left_sideControl = $LeftSideControl
 onready var right_sideControl = $RightSideControl
+onready var centerControl = $CenterControl
 
 var rpcs_to_send = range(4)
 var action_buttons = preload("res://Buttons/SingleLetterTouchScreenButton.tscn")
@@ -50,6 +51,11 @@ func _on_button_released(side, button):
 	if Client.connected:
 		for rpc in rpcs_to_send:
 			rpc_unreliable_id(1, '_on_button_released', side, button)
+
+
+func _on_textentry_text_entered(side, id, _text):
+	if Client.connected:
+		rpc_id(1, "_on_textentry_text_entered", side, id, _text)
 
 
 func _on_direction_calculated(side, direction, intensity, is_joystick):

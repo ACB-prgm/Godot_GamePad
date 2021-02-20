@@ -184,6 +184,6 @@ static func load_layout_info() -> Dictionary:
 			layout_info = file.get_var()
 			file.close()
 	else:
-		print('No Load Data')
+		print('No Layout Saved')
 	
 	return layout_info

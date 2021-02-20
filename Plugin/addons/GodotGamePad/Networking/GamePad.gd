@@ -14,7 +14,7 @@ signal gamepad_connected(id)
 signal gamepad_disconnected(id)
 
 
-func _notification(what):
+func _notification(what): # DO NOT MODIFY
 	# Runs automatically when the game is quit to ensure that ports are closed
 	# and the Server is shut down correctly
 	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST or what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
@@ -22,7 +22,7 @@ func _notification(what):
 		self.get_tree().quit() # default behavior
 
 
-func search_for_controllers():
+func search_for_controllers(): # DO NOT MODIFY
 	# Creates a Server that will host the connections to/from the GamePads
 	# and begins a UDP Broadcast to search for any nearby GamePads which are 
 	# searching for the host server. (An example would be to add a button to 
@@ -34,13 +34,13 @@ func search_for_controllers():
 		UdpBroadcast.start_broadcast() # Begins searching for GamePads
 
 
-func stop_search_for_controllers():
+func stop_search_for_controllers(): # DO NOT MODIFY
 	# Should be called after all players are connected and play is about to begin
 	if UdpBroadcast.is_broadcasting:
 		UdpBroadcast.stop_broadcast() # Stops searching for GamePads
 
 
-func stop_server():
+func stop_server(): # DO NOT MODIFY
 	# Automatically called when the game is quit, but you may call this if you 
 	# want to create a new server for whatever reason or the game has been idle 
 	# for too long.  It is entirely fine if this function is never used.
@@ -54,7 +54,7 @@ func _on_Server_network_peer_connected(id):
 	# Emitted when a GamePad connects to the server.  The ID is a unique
 	# identifier that corresponds to that mobile device.  This ID will be 
 	# assigned when the GamePad connects, and thus will change if a GamePad
-	#disconnects and re-connects
+	# disconnects and re-connects
 	emit_signal("gamepad_connected", id)
 
 
@@ -62,7 +62,7 @@ func _on_Server_network_peer_disconnected(id):
 	# Emitted when a GamePad disconnects from the server.  The ID is a unique
 	# identifier that corresponds to that mobile device.  This ID will be 
 	# assigned when the GamePad connects, and thus will change if a GamePad
-	#disconnects and re-connects
+	# disconnects and re-connects
 	emit_signal("gamepad_disconnected", id)
 	
 

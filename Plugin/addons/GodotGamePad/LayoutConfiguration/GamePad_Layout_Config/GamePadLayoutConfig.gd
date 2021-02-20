@@ -33,7 +33,8 @@ func _ready():
 
 func _parse_begin(inspector: EditorInspectorPlugin):
 	UI_Builder.save_Inspector(inspector)
-	layout_dict = UI_Builder.load_layout_info()
+	if UI_Builder.load_layout_info():
+		layout_dict = UI_Builder.load_layout_info()
 	
 	for child in self.get_children():
 		child.free()
@@ -137,4 +138,5 @@ func draw_on_layout(controller_location, layout_control: Control, clear=false) -
 #	"enabled": Bool, draw button on screen
 #	"button_text": String, text to set inside button
 #	"button_text_maxl_length": int, max length of text to set inside button
+#	"color_unpressed": Color(1,1,1,1)
 

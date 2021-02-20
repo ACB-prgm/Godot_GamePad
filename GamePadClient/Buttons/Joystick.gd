@@ -1,6 +1,7 @@
 extends TextureRect
 
 
+const is_directional = true
 const is_joystick = true
 
 signal input_direction_calculated(direction, intensity)

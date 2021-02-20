@@ -22,12 +22,11 @@ func _ready():
 	if initialized:
 		onready_layout_dict = UI_Builder.load_layout_info()
 		
-		var selected_device = onready_layout_dict.get(controller_location)
-		if selected_device != "empty":
-			drop_button.set_pressed(true)
-			device_dropdown.set_option(selected_device)
-		
-		
+		if onready_layout_dict:
+			var selected_device = onready_layout_dict.get(controller_location)
+			if selected_device != "empty":
+				drop_button.set_pressed(true)
+				device_dropdown.set_option(selected_device)
 
 
 func initialize(button_name: String = "No Container Name Set", LayoutNode = null):

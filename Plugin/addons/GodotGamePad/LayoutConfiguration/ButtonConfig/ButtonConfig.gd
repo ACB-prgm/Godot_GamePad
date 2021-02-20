@@ -92,5 +92,6 @@ func _on_EnabledCheckBox_toggled(button_pressed):
 
 
 func _on_ChildrenContainer_color_changed(color):
+	color = color.to_html()
 	button_attributes["color_unpressed"] = color
 	emit_signal("button_config_changed", button_attributes)

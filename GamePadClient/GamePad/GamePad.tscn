@@ -40,9 +40,22 @@ margin_left = -900.0
 margin_right = -150.0
 side = "right"
 
+[node name="CenterControl" parent="." instance=ExtResource( 1 )]
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = -375.0
+margin_top = 0.0
+margin_right = 375.0
+margin_bottom = 372.0
+
 [connection signal="button_pressed" from="LeftSideControl" to="." method="_on_button_pressed"]
 [connection signal="button_released" from="LeftSideControl" to="." method="_on_button_released"]
 [connection signal="input_direction_calculated" from="LeftSideControl" to="." method="_on_direction_calculated"]
+[connection signal="text_submitted" from="LeftSideControl" to="." method="_on_textentry_text_entered"]
 [connection signal="button_pressed" from="RightSideControl" to="." method="_on_button_pressed"]
 [connection signal="button_released" from="RightSideControl" to="." method="_on_button_released"]
 [connection signal="input_direction_calculated" from="RightSideControl" to="." method="_on_direction_calculated"]
+[connection signal="text_submitted" from="RightSideControl" to="." method="_on_textentry_text_entered"]
+[connection signal="text_submitted" from="CenterControl" to="." method="_on_textentry_text_entered"]
