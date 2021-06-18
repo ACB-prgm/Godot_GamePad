@@ -1,4 +1,4 @@
- # Godot GamePad (v1.0.2)
+ # Godot GamePad (v1.0.9)
 
 ![Github_controller_image](https://user-images.githubusercontent.com/63984796/107990013-565b6e00-6f88-11eb-873e-56191d0348a8.png)
 ### Introduction
@@ -21,7 +21,7 @@ ___
 - **√** D-Pad
 - **√** Joystick
 - **√** Action Buttons
+- **√** Square Text Buttons (versatile buttons that are more customizable. Start/menu buttons and trivia buttons are examples)
 - **X** Text Input (enter names or trivia answers)
-- **X** Square Text Buttons (versatile buttons that are more customizable. Start/menu buttons and trivia buttons are examples)
 - **X** Steering Wheel (Gyroscope)
 - **X** Aesthetics Editing (change background color)
