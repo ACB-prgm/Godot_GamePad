@@ -24,6 +24,7 @@ position = Vector2( 125, 125 )
 normal = ExtResource( 2 )
 pressed = ExtResource( 1 )
 shape = SubResource( 1 )
+shape_visible = false
 
 [connection signal="pressed" from="TouchScreenButton" to="." method="_on_TouchScreenButton_pressed"]
 [connection signal="released" from="TouchScreenButton" to="." method="_on_TouchScreenButton_released"]

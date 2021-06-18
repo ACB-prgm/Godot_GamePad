@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://addons/GodotGamePad/LayoutConfiguration/GamePad_Layout_Config/GamePadLayoutConfig.gd" type="Script" id=1]
+[ext_resource path="res://addons/GodotGamePad/LayoutConfiguration/ButtonStyleboxes/DefualtButtonStylebox.tres" type="StyleBox" id=2]
 
 [node name="GamePadLayoutConfig" type="Control"]
 anchor_right = 1.0
@@ -9,3 +10,4 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+button_style_creator = ExtResource( 2 )

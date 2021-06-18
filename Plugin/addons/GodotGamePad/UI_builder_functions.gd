@@ -11,6 +11,12 @@ const device_options = [
 	'text input button'
 ]
 
+const center_device_options = [
+	'empty',
+	'square text button',
+	'text input button'
+]
+
 const anchor_options = [
 	'center',
 	'right',
@@ -126,6 +132,24 @@ static func create_layout_action_button(button_text: String) -> CenterContainer:
 	return container
 
 
+static func create_layout_panelbutton(button_info, controller_location) -> PanelContainer:
+	var new_button = PanelContainer.new()
+	
+	if button_info.get("button_stylebox_info"):
+		var panel = create_tres_from_info(button_info.get("button_stylebox_info"))
+		new_button.set("custom_styles/panel", panel)
+	
+	var label = Label.new()
+	label.set("custom_fonts/font", load("res://addons/GodotGamePad/LayoutConfiguration/Fonts/ArialRoundedDynamicfont.tres"))
+	label.set_text(button_info.get("button_text"))
+	label.set_align(Label.ALIGN_CENTER)
+	if button_info.get("button_type") == "text_input_button":
+		label.modulate.a = 0.6
+	new_button.add_child(label)
+	
+	return new_button
+
+
 # SAVING FUNCTIONS
 const SAVE_DIR = 'user://UI_Plugin_data/'
 const inspector_save_path = SAVE_DIR + 'inspector.dat'
@@ -143,7 +167,7 @@ static func save_Inspector(inspector: EditorInspectorPlugin):
 		
 		var inspector_ID = inspector.get_instance_id()
 		file.store_var(inspector_ID)
-		file.close()
+	file.close()
 
 
 static func load_Inspector() -> EditorInspectorPlugin:
@@ -154,7 +178,7 @@ static func load_Inspector() -> EditorInspectorPlugin:
 		var error = file.open_encrypted_with_pass(inspector_save_path, File.READ, 'abigail')
 		if error == OK:
 			inspector = instance_from_id(file.get_var())
-			file.close()
+		file.close()
 	else:
 		print('No Load Data')
 	
@@ -169,9 +193,8 @@ static func save_layout_info(layout_info: Dictionary):
 	var file = File.new()
 	var error = file.open(layoutInfo_save_path, File.WRITE)
 	if error == OK:
-		
 		file.store_var(layout_info)
-		file.close()
+	file.close()
 
 
 static func load_layout_info() -> Dictionary:
@@ -182,8 +205,24 @@ static func load_layout_info() -> Dictionary:
 		var error = file.open(layoutInfo_save_path, File.READ)
 		if error == OK:
 			layout_info = file.get_var()
-			file.close()
+		file.close()
 	else:
 		print('No Layout Saved')
 	
 	return layout_info
+
+
+static func create_tres_from_info(stylebox_info) -> Resource:
+	var dir = "res://addons/GodotGamePad/LayoutConfiguration/ButtonStyleboxes/"
+#	var file_name = "%s_button_%s" % [controller_location, button_info.get("child_number")]
+	var file_name = "TEMP_FILE"
+	var path = dir + "%s.tres" % [file_name]
+	var tres_file = File.new()
+	var error = tres_file.open(path, File.WRITE)
+	if error == OK:
+		tres_file.store_string(stylebox_info)
+	tres_file.close()
+	
+	return load(path)
+
+

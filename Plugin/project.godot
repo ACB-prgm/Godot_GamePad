@@ -32,7 +32,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "DropDownContainer": "",
 "DropDownProperty": "",
-"GamePadLayout": "",
+"GamePadLayout": "res://addons/GodotGamePad/LayoutConfiguration/AddOn_Images/GodotGamepadIcon.svg",
 "UI_Builder": ""
 }
 
@@ -40,7 +40,7 @@ _global_script_class_icons={
 
 config/name="GodotGamePadPlugin"
 run/main_scene="res://ExampleLobby/ExampleLobby.tscn"
-config/icon="res://icon.png"
+config/icon="res://addons/GodotGamePad/LayoutConfiguration/AddOn_Images/GamePad_Icon_large.png"
 
 [autoload]
 
@@ -50,7 +50,7 @@ GamePad="*res://addons/GodotGamePad/Networking/GamePad.tscn"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "GodotGamePad" )
+enabled=PoolStringArray( "res://addons/GodotGamePad/plugin.cfg" )
 
 [rendering]
 

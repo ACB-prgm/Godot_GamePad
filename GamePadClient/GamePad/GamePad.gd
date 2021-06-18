@@ -4,13 +4,17 @@ extends Control
 onready var tween = $Tween
 onready var left_sideControl = $LeftSideControl
 onready var right_sideControl = $RightSideControl
-onready var centerControl = $CenterControl
+onready var centerControl = $CenterContainer
+onready var center_topControl = $CenterTopContainer
+onready var center_bottomControl = $CenterBottomContainer
 
 var rpcs_to_send = range(4)
-var action_buttons = preload("res://Buttons/SingleLetterTouchScreenButton.tscn")
+var action_buttons = preload("res://Buttons/ActionButtons.tscn")
 var dpad = preload("res://Buttons/Dpad.tscn")
 var joystick = preload("res://Buttons/Joystick.tscn")
-var sides = ["left_side", "right_side"]
+var square_text_button = preload("res://Buttons/SquareTextButton.tscn")
+var sides = ["left_side", "right_side", "center_top", "center_bottom", "center"]
+
 
 func _ready():
 	var layout_dict = Client.layout_dict
@@ -24,14 +28,23 @@ func _ready():
 	else:
 		for side in sides:
 			if layout_dict.get(side) != "empty":
-				var side_control = self.get("%sControl" % side)
-				var side_device: String = layout_dict.get(side)
+				var side_control : Control = self.get("%sControl" % side)
+				var side_device : String = layout_dict.get(side)
 				
-				if side_device in ["joystick", "d-pad"]:
-					side_control.spawn_control(self.get(side_device.replace("-", "")))
-				else: # is a button
+				if side in ["center_top", "center_bottom", "center"]:
+					var vbox_options = layout_dict.get("%s_options" % side)
+					side_control.set_width(vbox_options[0] * 3) # because app is 3x size of layout config
+					side_control.set("custom_constants/separation", vbox_options[1])
+					
 					for button_info in layout_dict.get("%s_buttons" % side):
 						side_control.spawn_control(self.get(side_device), button_info)
+				
+				else:
+					if side_device in ["joystick", "d-pad"]:
+						side_control.spawn_control(self.get(side_device.replace("-", "")))
+					else: # is a button
+						for button_info in layout_dict.get("%s_buttons" % side):
+							side_control.spawn_control(self.get(side_device), button_info)
 	
 	for child in self.get_children():
 		if child.get('modulate') and child != $BackgroundTextureRect:

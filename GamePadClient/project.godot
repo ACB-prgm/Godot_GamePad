@@ -14,12 +14,16 @@ config/name="Game Pad Client"
 run/main_scene="res://JoinServer/JoinServerControl.tscn"
 boot_splash/image="res://Images/Background.png"
 boot_splash/bg_color=Color( 0.101961, 0.101961, 0.12549, 1 )
-config/icon="res://icon.png"
+config/icon="res://Icons/1024Icon.png"
 
 [autoload]
 
 Client="*res://Client/Client.gd"
 UdpBroadcast="*res://UDP_Broadcast.gd"
+
+[debug]
+
+gdscript/completion/autocomplete_setters_and_getters=true
 
 [display]
 
@@ -29,6 +33,11 @@ window/size/test_width=960
 window/size/test_height=540
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
+
+[global]
+
+delay=false
+simulate=false
 
 [input_devices]
 

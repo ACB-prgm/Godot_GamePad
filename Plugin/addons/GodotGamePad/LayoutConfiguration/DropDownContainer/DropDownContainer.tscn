@@ -42,5 +42,5 @@ margin_right = 161.0
 margin_bottom = 24.0
 custom_constants/separation = 10
 
-[connection signal="toggled" from="PanelContainer/ToolButton" to="." method="_on_ToolButton_toggled"]
 [connection signal="toggled" from="PanelContainer/ToolButton" to="PanelContainer/ToolButton" method="_on_ToolButton_toggled"]
+[connection signal="toggled" from="PanelContainer/ToolButton" to="." method="_on_ToolButton_toggled"]

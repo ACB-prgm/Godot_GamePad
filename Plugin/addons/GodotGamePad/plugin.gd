@@ -3,7 +3,6 @@ extends EditorPlugin
 
 
 var InspectorPlugin = preload("res://addons/GodotGamePad/LayoutConfiguration/my_inspector_plugin/MyInspectorPlugin.gd")
-var LayoutConfigScript = preload("res://addons/GodotGamePad/LayoutConfiguration/GamePad_Layout_Config/GamePadLayoutConfig.gd")
 var LayoutConfigIcon = preload("res://addons/GodotGamePad/LayoutConfiguration/AddOn_Images/GamePad_Icon_large.png")
 var udpBroadcast = "res://addons/GodotGamePad/Networking/UDP_Broadcast.gd"
 var server = "res://addons/GodotGamePad/Networking/Server.gd"
@@ -18,7 +17,7 @@ func _enter_tree():
 	InspectorPlugin = InspectorPlugin.new()
 	add_inspector_plugin(InspectorPlugin)
 	
-	add_custom_type("GamePadLayout", "Control", LayoutConfigScript, LayoutConfigIcon)
+#	add_custom_type("GamePadLayout", "Control", LayoutConfigScript, LayoutConfigIcon)
 	
 
 

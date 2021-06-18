@@ -9,7 +9,8 @@ signal input_direction_calculated(side, direction, intensity, is_joystick)
 export (
 	String,
 	'left',
-	'right'
+	'right',
+	'center'
 	) var side
 
 var has_joystick = false
@@ -43,8 +44,8 @@ func spawn_control(control, info: Dictionary={}):
 		if ins_control.get("is_button"):
 			ins_control.set_button(info.get("button_text"), self, info.get("color_unpressed"))
 		
-		elif ins_control.get("is_textentry"):
-			ins_control.set_textentry(self, "main", "hello", load("res://Buttons/TextEntry/default_stylebox.tres"), 5, 1)
+		elif ins_control.get("is_panelButton"):
+			ins_control.set_panel_button(info, self)
 
 
 func _on_button_pressed(button):

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://addons/GodotGamePad/LayoutConfiguration/ButtonConfig/ButtonConfig.gd" type="Script" id=1]
 [ext_resource path="res://addons/GodotGamePad/LayoutConfiguration/ColorSelector/ColorSelector.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/GodotGamePad/LayoutConfiguration/AddOn_Images/Remove.png" type="Texture" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -9,6 +10,8 @@ border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
+
+[sub_resource type="StyleBoxEmpty" id=2]
 
 [node name="PanelContainer" type="PanelContainer"]
 anchor_right = 1.0
@@ -25,23 +28,42 @@ margin_top = 1.0
 margin_right = 1023.0
 margin_bottom = 599.0
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 margin_right = 1022.0
-margin_bottom = 14.0
+margin_bottom = 32.0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+margin_top = 9.0
+margin_right = 94.0
+margin_bottom = 23.0
 text = "Button Type -1"
 align = 1
 valign = 1
 
+[node name="RemoveButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+margin_left = 98.0
+margin_right = 130.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+rect_pivot_offset = Vector2( 16, 16 )
+shortcut_in_tooltip = false
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 3 )
+texture_focused = ExtResource( 3 )
+expand = true
+stretch_mode = 5
+
 [node name="EnabledCheckBox" type="CheckBox" parent="VBoxContainer"]
-margin_top = 18.0
+margin_top = 36.0
 margin_right = 1022.0
-margin_bottom = 42.0
+margin_bottom = 60.0
 text = "Enabled"
 
 [node name="ButtonTextLineEdit" type="LineEdit" parent="VBoxContainer"]
-margin_top = 46.0
+margin_top = 64.0
 margin_right = 1022.0
-margin_bottom = 70.0
+margin_bottom = 88.0
 max_length = 1
 placeholder_text = "Enter Button Text"
 placeholder_alpha = 0.7
@@ -50,10 +72,48 @@ caret_blink = true
 [node name="ColorSelector" parent="VBoxContainer" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 74.0
+margin_top = 92.0
 margin_right = 1022.0
-margin_bottom = 88.0
+margin_bottom = 106.0
 
+[node name="StyleSelectHBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 110.0
+margin_right = 1022.0
+margin_bottom = 130.0
+
+[node name="LoadStyleButton" type="Button" parent="VBoxContainer/StyleSelectHBoxContainer"]
+margin_right = 124.0
+margin_bottom = 20.0
+text = "Load Button Style"
+
+[node name="ButtonStylDisplayPanel" type="Panel" parent="VBoxContainer/StyleSelectHBoxContainer"]
+margin_left = 128.0
+margin_right = 1022.0
+margin_bottom = 20.0
+grow_vertical = 2
+rect_min_size = Vector2( 0, 10 )
+size_flags_horizontal = 3
+size_flags_vertical = 5
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FileDialog" type="FileDialog" parent="VBoxContainer/StyleSelectHBoxContainer"]
+margin_top = -18.0
+margin_right = 1022.0
+margin_bottom = 166.0
+rect_min_size = Vector2( 400, 140 )
+popup_exclusive = true
+window_title = "Open a Stylebox.tres File"
+resizable = true
+mode_overrides_title = false
+mode = 0
+filters = PoolStringArray( "*.tres" )
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/RemoveButton" to="." method="_on_RemoveButton_pressed"]
 [connection signal="toggled" from="VBoxContainer/EnabledCheckBox" to="." method="_on_EnabledCheckBox_toggled"]
 [connection signal="text_changed" from="VBoxContainer/ButtonTextLineEdit" to="." method="_on_LineEdit_text_changed"]
 [connection signal="color_changed" from="VBoxContainer/ColorSelector" to="." method="_on_ChildrenContainer_color_changed"]
+[connection signal="pressed" from="VBoxContainer/StyleSelectHBoxContainer/LoadStyleButton" to="." method="_on_GrabStyleButton_pressed"]
+[connection signal="file_selected" from="VBoxContainer/StyleSelectHBoxContainer/FileDialog" to="." method="_on_FileDialog_file_selected"]

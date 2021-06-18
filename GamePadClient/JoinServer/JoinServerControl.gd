@@ -12,6 +12,8 @@ var join_attempted = false
 
 
 func _ready():
+	ProjectSettings.set("input_devices/pointing/ios/touch_delay", 0)
+	
 	for child in self.get_children():
 		if child.get('modulate') and child != $BackgroundTextureRect and child != message:
 			child.set_modulate(Color(1,1,1,0))
