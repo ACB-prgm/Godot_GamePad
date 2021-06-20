@@ -1,4 +1,4 @@
- # Godot GamePad (v1.0.9)
+ # Godot GamePad (v1.1.0)
 ![Thumbnail_Transparent](https://user-images.githubusercontent.com/63984796/122614542-d982f280-d054-11eb-95aa-2936c55d3293.png)
 ### Introduction
 The Godot GamePad is a two-part project that allows players to use their mobile devices as controllers with games made in Godot.  The mobile app will be
@@ -23,4 +23,5 @@ ___
 - **√** Square Text Buttons (versatile buttons that are more customizable. Start/menu buttons and trivia buttons are examples)
 - **X** Text Input (enter names or trivia answers)
 - **X** Steering Wheel (Gyroscope)
-- **X** Aesthetics Editing (change background color)
+- **X** Aesthetics Editing (change background image and color)
+- **X** Multiple Layouts (save multiple controller layouts enabling different players to have different layouts)
