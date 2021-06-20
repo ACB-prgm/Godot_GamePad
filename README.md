@@ -23,4 +23,5 @@ ___
 - **√** Square Text Buttons (versatile buttons that are more customizable. Start/menu buttons and trivia buttons are examples)
 - **X** Text Input (enter names or trivia answers)
 - **X** Steering Wheel (Gyroscope)
-- **X** Aesthetics Editing (change background color)
+- **X** Aesthetics Editing (change background image and color)
+- **X** Multiple Layouts (save multiple controller layouts enabling different players to have different layouts)
