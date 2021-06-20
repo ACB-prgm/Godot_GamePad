@@ -2,7 +2,7 @@ extends PanelContainer
 
 
 const is_panelButton : bool = true
-const PRESSED_COLOR := Color(0.5, 0.65, 1, 1)
+const PRESSED_COLOR := Color(0.4, 0.55, 1, 1.2)
 
 onready var label = $Label
 
@@ -17,6 +17,8 @@ signal button_released(_button)
 
 func set_panel_button(button_info, side_control) -> void:
 	button = button_info.get("button_text")
+	unpressed_color = button_info.get("color_unpressed")
+	label.set_modulate(unpressed_color)
 	label.set_text(button)
 	
 	unpressed_style = create_tres_from_info(button_info.get("button_stylebox_info"))

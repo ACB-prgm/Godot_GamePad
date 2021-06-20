@@ -1,9 +1,19 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://GamePad/SideControl.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Images/Background.png" type="Texture" id=2]
 [ext_resource path="res://GamePad/GamePad.gd" type="Script" id=3]
 [ext_resource path="res://GamePad/CenterContainer.gd" type="Script" id=4]
+
+[sub_resource type="Environment" id=1]
+background_mode = 4
+glow_enabled = true
+glow_levels/2 = true
+glow_levels/4 = true
+glow_levels/5 = false
+glow_intensity = 2.0
+glow_blend_mode = 0
+glow_bicubic_upscale = true
 
 [node name="GamePad" type="Control"]
 anchor_right = 1.0
@@ -29,6 +39,9 @@ texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
 
 [node name="Tween" type="Tween" parent="."]
 

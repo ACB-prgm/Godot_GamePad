@@ -44,16 +44,12 @@ func _ready():
 	set_anchors_and_margins_preset(Control.PRESET_WIDE, Control.PRESET_MODE_MINSIZE)
 
 
-#func set_center_width(new_val):
-#	center_buttons_width = new_val
-#	if centerControl:
-#		centerControl.rect_min_size.x = new_val
-
-
 func _parse_begin(inspector: EditorInspectorPlugin):
 	UI_Builder.save_Inspector(inspector)
 	if UI_Builder.load_layout_info():
 		layout_dict = UI_Builder.load_layout_info()
+	else:
+		UI_Builder.save_layout_info(layout_dict)
 	
 	for child in self.get_children():
 		child.free()

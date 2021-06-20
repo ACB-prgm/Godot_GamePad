@@ -106,7 +106,7 @@ static func create_category_header(title_string: String = "GamePad Layout Config
 	title_panel.add_child(title_container)
 	
 	var title_texture = TextureRect.new()
-	title_texture.set_texture(load("res://addons/GodotGamePad/LayoutConfiguration/AddOn_Images/GamePad_Icon_large.png"))
+	title_texture.set_texture(load("res://addons/GodotGamePad/LayoutConfiguration/AddOn_Images/GodotGamepadIcon.svg"))
 	title_texture.set_stretch_mode(6)
 	title_container.add_child(title_texture)
 	
@@ -140,6 +140,7 @@ static func create_layout_panelbutton(button_info, controller_location) -> Panel
 		new_button.set("custom_styles/panel", panel)
 	
 	var label = Label.new()
+	label.set_modulate(button_info.get("color_unpressed"))
 	label.set("custom_fonts/font", load("res://addons/GodotGamePad/LayoutConfiguration/Fonts/ArialRoundedDynamicfont.tres"))
 	label.set_text(button_info.get("button_text"))
 	label.set_align(Label.ALIGN_CENTER)

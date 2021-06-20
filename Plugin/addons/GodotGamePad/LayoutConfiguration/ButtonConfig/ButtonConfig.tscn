@@ -34,15 +34,15 @@ margin_bottom = 32.0
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
 margin_top = 9.0
-margin_right = 94.0
+margin_right = 89.0
 margin_bottom = 23.0
-text = "Button Type -1"
+text = "Button Type 1"
 align = 1
 valign = 1
 
 [node name="RemoveButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
-margin_left = 98.0
-margin_right = 130.0
+margin_left = 93.0
+margin_right = 125.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
 rect_pivot_offset = Vector2( 16, 16 )
@@ -58,6 +58,7 @@ stretch_mode = 5
 margin_top = 36.0
 margin_right = 1022.0
 margin_bottom = 60.0
+pressed = true
 text = "Enabled"
 
 [node name="ButtonTextLineEdit" type="LineEdit" parent="VBoxContainer"]

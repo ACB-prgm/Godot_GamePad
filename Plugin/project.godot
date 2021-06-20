@@ -40,7 +40,7 @@ _global_script_class_icons={
 
 config/name="GodotGamePadPlugin"
 run/main_scene="res://ExampleLobby/ExampleLobby.tscn"
-config/icon="res://addons/GodotGamePad/LayoutConfiguration/AddOn_Images/GamePad_Icon_large.png"
+config/icon="res://icon.png"
 
 [autoload]
 

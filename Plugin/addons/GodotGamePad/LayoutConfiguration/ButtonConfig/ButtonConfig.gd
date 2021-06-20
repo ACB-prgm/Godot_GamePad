@@ -2,6 +2,8 @@ tool
 extends PanelContainer
 
 
+const is_button_config := true
+
 onready var children_container = $VBoxContainer
 onready var button_label = $VBoxContainer/HBoxContainer/Label
 onready var enabled_button = $VBoxContainer/EnabledCheckBox
@@ -70,9 +72,12 @@ func _ready():
 		styleSelector.hide()
 		colorSelector.show()
 	else: # TEXT_INPUT OR SQUARE_TEXT BUTTON
+		button_attributes["child_number"] = get_child_number()
 		button_label.set_text("%s %s" % [button_attributes.get("button_type").replace(" ", "_").capitalize(), str(button_attributes.get("child_number"))])
-		colorSelector.hide()
+#		colorSelector.hide()
 		button_attributes["enabled"] = true
+		
+		emit_signal("button_config_changed", button_attributes)
 	
 	button_text_entry.set_max_length(button_attributes.get("button_text_maxl_length"))
 	
@@ -100,12 +105,19 @@ func exists_in_buttons(buttons, what):
 	return false
 
 
-func _on_change_name():
-	var child_number = -2
+func get_child_number() -> int:
+	var child_number := 0
 	for child in get_parent().get_children():
-		child_number += 1
-		if child == self:
-			break
+		if child.get("is_button_config"):
+			child_number += 1
+			if child == self:
+				return child_number
+	
+	return child_number
+
+
+func _on_change_name():
+	var child_number = get_child_number()
 	
 	button_attributes["child_number"] = child_number
 	button_label.set_text("%s %s" % [button_attributes.get("button_type").replace(" ", "_").capitalize(), str(button_attributes.get("child_number"))])

@@ -3,7 +3,6 @@ extends EditorPlugin
 
 
 var InspectorPlugin = preload("res://addons/GodotGamePad/LayoutConfiguration/my_inspector_plugin/MyInspectorPlugin.gd")
-var LayoutConfigIcon = preload("res://addons/GodotGamePad/LayoutConfiguration/AddOn_Images/GamePad_Icon_large.png")
 var udpBroadcast = "res://addons/GodotGamePad/Networking/UDP_Broadcast.gd"
 var server = "res://addons/GodotGamePad/Networking/Server.gd"
 var gamePad = "res://addons/GodotGamePad/Networking/GamePad.tscn"
