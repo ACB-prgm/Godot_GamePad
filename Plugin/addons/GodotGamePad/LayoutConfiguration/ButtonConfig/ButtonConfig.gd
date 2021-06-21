@@ -23,7 +23,7 @@ var button_attributes: Dictionary = {
 	"button_text_maxl_length": 1,
 	"enabled": false,
 	"button_text": "A",
-	"color_unpressed": Color(1,1,1,1),
+	"color_unpressed": Color(1,1,1,1).to_html(),
 	"button_stylebox_info" : null
 }
 
