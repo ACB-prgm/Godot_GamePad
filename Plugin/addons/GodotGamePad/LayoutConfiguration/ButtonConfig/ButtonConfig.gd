@@ -74,10 +74,7 @@ func _ready():
 	else: # TEXT_INPUT OR SQUARE_TEXT BUTTON
 		button_attributes["child_number"] = get_child_number()
 		button_label.set_text("%s %s" % [button_attributes.get("button_type").replace(" ", "_").capitalize(), str(button_attributes.get("child_number"))])
-#		colorSelector.hide()
 		button_attributes["enabled"] = true
-		
-		emit_signal("button_config_changed", button_attributes)
 	
 	button_text_entry.set_max_length(button_attributes.get("button_text_maxl_length"))
 	
@@ -93,6 +90,8 @@ func _ready():
 		if button.get("button_stylebox_info"):
 			var panel = UI_Builder.create_tres_from_info(button.get("button_stylebox_info"))
 			buttonStyleDisplay.set("custom_styles/panel", panel)
+	else:
+		emit_signal("button_config_changed", button_attributes)
 	
 	enabled_button.set_pressed(button_attributes.get("enabled"))
 
@@ -118,7 +117,6 @@ func get_child_number() -> int:
 
 func _on_change_name():
 	var child_number = get_child_number()
-	
 	button_attributes["child_number"] = child_number
 	button_label.set_text("%s %s" % [button_attributes.get("button_type").replace(" ", "_").capitalize(), str(button_attributes.get("child_number"))])
 
