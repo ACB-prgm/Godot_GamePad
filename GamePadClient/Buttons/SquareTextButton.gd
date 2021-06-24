@@ -74,4 +74,4 @@ func create_tres_from_info(stylebox_info) -> Resource:
 		tres_file.store_string(stylebox_info)
 	tres_file.close()
 	
-	return load(path)
+	return load(path).duplicate()

@@ -46,6 +46,7 @@ environment = SubResource( 1 )
 [node name="Tween" type="Tween" parent="."]
 
 [node name="LeftSideControl" parent="." instance=ExtResource( 1 )]
+side = "left"
 
 [node name="RightSideControl" parent="." instance=ExtResource( 1 )]
 anchor_left = 1.0
