@@ -12,10 +12,7 @@ export (
 	'center_bottom'
 	) var side
 
-onready var center = Vector2(
-	ProjectSettings.get("display/window/size/width")/2.0,
-	ProjectSettings.get("display/window/size/height")/2.0
-	)
+onready var center = get_viewport_rect().size / 2.0
 
 
 func spawn_control(control, info: Dictionary={}) -> void:
