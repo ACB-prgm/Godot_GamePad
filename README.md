@@ -7,7 +7,7 @@ free to download on the Google Play and Apple App stores when it is finished.  T
 ___
 
 ### For Developers
-> **if you are going to try and build the GamePad Mobile app yourself, you must use Godot 3.2.4 or higher and set Project Settings>Input Devices>Touch Delay = 0.  Otherwise, there will be significant latency**
+> **if you are going to try and build the GamePad Mobile app yourself, you must use Godot 3.2.4 or higher.  Otherwise, there will be significant latency**
 
 As a developer, you can allow your game to work with the gamepad by downloading the [GodotGamePad Plugin](https://github.com/ACB-prgm/Godot_GamePad/tree/main/Plugin) from this repository and integrating it into your project ([how to install plugins](https://docs.godotengine.org/en/stable/tutorials/plugins/editor/installing_plugins.html)).  This plugin allows you to configure the layout of the controller as shown in the image below to be custom for your game.  This plugin also creates an autoload called [GamePad](https://github.com/ACB-prgm/Godot_GamePad/blob/main/PluginTest/addons/GodotGamePad/Networking/GamePad.gd) that serves as an API for receiving the controller inputs and connecting and managing GamePads.  To understand how to use it, open the script and read the comments. (this will be improved in the future).  There is also currently an [Example Lobby](https://github.com/ACB-prgm/Godot_GamePad/tree/main/Plugin/ExampleLobby) scene in the **Plugin** directory that shows how you might go about setting up a scene to connect controllers.
 
