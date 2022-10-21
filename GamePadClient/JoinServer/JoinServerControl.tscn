@@ -6,6 +6,11 @@
 [ext_resource path="res://JoinServer/Loading.tscn" type="PackedScene" id=4]
 [ext_resource path="res://JoinServer/Message.tscn" type="PackedScene" id=5]
 
+[sub_resource type="DynamicFont" id=6]
+size = 132
+use_filter = true
+font_data = ExtResource( 2 )
+
 [sub_resource type="StyleBoxEmpty" id=1]
 
 [sub_resource type="StyleBoxEmpty" id=2]
@@ -15,11 +20,6 @@
 [sub_resource type="StyleBoxEmpty" id=4]
 
 [sub_resource type="StyleBoxEmpty" id=5]
-
-[sub_resource type="DynamicFont" id=6]
-size = 132
-use_filter = true
-font_data = ExtResource( 2 )
 
 [node name="JoinServerControl" type="Control"]
 anchor_right = 1.0
@@ -35,9 +35,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -960.0
+margin_left = -960.719
 margin_top = -540.0
-margin_right = 960.0
+margin_right = 959.281
 margin_bottom = 540.0
 texture = ExtResource( 1 )
 __meta__ = {
@@ -53,12 +53,12 @@ margin_left = -276.5
 margin_top = -79.5
 margin_right = 276.5
 margin_bottom = 79.5
+custom_fonts/font = SubResource( 6 )
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
 custom_styles/disabled = SubResource( 4 )
 custom_styles/normal = SubResource( 5 )
-custom_fonts/font = SubResource( 6 )
 shortcut_in_tooltip = false
 text = "Connect"
 __meta__ = {

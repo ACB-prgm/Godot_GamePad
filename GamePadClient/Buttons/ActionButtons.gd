@@ -15,6 +15,7 @@ onready var label = $Label
 
 
 func set_button(button_, side_control, color):
+	
 	self.button = button_
 	label.set_text(button_)
 	

@@ -17,9 +17,6 @@ font_data = ExtResource( 3 )
 margin_right = 250.0
 margin_bottom = 250.0
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 button = "A"
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="."]
@@ -27,6 +24,10 @@ normal = ExtResource( 2 )
 pressed = ExtResource( 1 )
 shape = SubResource( 1 )
 passby_press = true
+
+[node name="Control" type="Control" parent="."]
+margin_right = 298.0
+margin_bottom = 301.0
 
 [node name="Label" type="Label" parent="."]
 anchor_left = 0.5
@@ -37,8 +38,8 @@ margin_left = -51.0
 margin_top = -82.5
 margin_right = 51.0
 margin_bottom = 82.5
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "A"
 align = 1
 valign = 1
