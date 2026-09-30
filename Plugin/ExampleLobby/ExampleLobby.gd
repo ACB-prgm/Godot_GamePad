@@ -30,7 +30,7 @@ func _on_GamePad_controller_connected(id):
 	for player in players:
 		values.append(players.get(player))
 		
-	for i in range(1, 4):
+	for i in range(1, 5):
 		var test_player = "player %s" % str(i)
 		if !test_player in values:
 			player_name = test_player
