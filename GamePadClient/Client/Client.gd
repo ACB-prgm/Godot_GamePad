@@ -44,10 +44,15 @@ func on_connected_to_server():
 
 func on_connection_failed():
 	print('connection failure')
+	connected = false
+	host_ip_address = null
+	UdpBroadcast.stop_broadcast()
 
 
 func on_server_disconnected():
 	print('Disconnected From Server')
 	connected = false
+	host_ip_address = null
+	UdpBroadcast.stop_broadcast()
 # warning-ignore:return_value_discarded
 	get_tree().change_scene("res://JoinServer/JoinServerControl.tscn")
