@@ -214,16 +214,38 @@ static func load_layout_info() -> Dictionary:
 
 
 static func create_tres_from_info(stylebox_info) -> Resource:
-	var dir = "res://addons/GodotGamePad/LayoutConfiguration/ButtonStyleboxes/"
-#	var file_name = "%s_button_%s" % [controller_location, button_info.get("child_number")]
-	var file_name = "TEMP_FILE"
-	var path = dir + "%s.tres" % [file_name]
+	var fallback = load("res://addons/GodotGamePad/LayoutConfiguration/ButtonStyleboxes/DefualtButtonStylebox.tres")
+	if fallback == null:
+		fallback = StyleBoxFlat.new()
+	if typeof(stylebox_info) != TYPE_STRING or stylebox_info.empty():
+		return fallback.duplicate()
+
+	var stylebox_dir = SAVE_DIR + "Styleboxes"
+	var directory = Directory.new()
+	var error = directory.make_dir_recursive(stylebox_dir)
+	if error != OK and not directory.dir_exists(stylebox_dir):
+		push_error("Could not create the temporary stylebox directory; using the default style.")
+		return fallback.duplicate()
+
+	var path = stylebox_dir + "/TEMP_FILE.tres"
 	var tres_file = File.new()
-	var error = tres_file.open(path, File.WRITE)
-	if error == OK:
-		tres_file.store_string(stylebox_info)
+	error = tres_file.open(path, File.WRITE)
+	if error != OK:
+		push_error("Could not save the custom stylebox; using the default style.")
+		return fallback.duplicate()
+
+	tres_file.store_string(stylebox_info)
+	var write_error = tres_file.get_error()
 	tres_file.close()
-	
-	return load(path).duplicate()
+	if write_error != OK:
+		push_error("Could not save the custom stylebox; using the default style.")
+		return fallback.duplicate()
+
+	var stylebox = ResourceLoader.load(path, "", true)
+	if not (stylebox is StyleBox):
+		push_error("Could not load the custom StyleBox; using the default style.")
+		return fallback.duplicate()
+
+	return stylebox.duplicate()
 
 

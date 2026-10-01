@@ -152,7 +152,7 @@ func _on_GrabStyleButton_pressed():
 
 func _on_FileDialog_file_selected(path):
 	var resource = load(path)
-	if resource is StyleBox:
+	if resource is StyleBoxFlat:
 		buttonStyleDisplay.set("custom_styles/panel", resource)
 		
 		var stylebox := ""
@@ -168,4 +168,4 @@ func _on_FileDialog_file_selected(path):
 		button_attributes["button_stylebox_info"] = stylebox
 		emit_signal("button_config_changed", button_attributes)
 	else:
-		push_error("ERR: RESOURCE IS NOT STYLEBOX")
+		push_error("ERR: RESOURCE IS NOT A STYLEBOXFLAT")
