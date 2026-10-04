@@ -65,13 +65,35 @@ func _on_Button_button_up():
 
 
 func create_tres_from_info(stylebox_info) -> Resource:
-	var dir = "res://Buttons/TempStyleboxes/"
-	var file_name = "TEMP_FILE"
-	var path = dir + "%s.tres" % [file_name]
+	var fallback = load("res://Buttons/TempStyleboxes/TEMP_FILE.tres")
+	if fallback == null:
+		fallback = StyleBoxFlat.new()
+	if typeof(stylebox_info) != TYPE_STRING or stylebox_info.empty():
+		return fallback.duplicate()
+
+	var directory = Directory.new()
+	var error = directory.make_dir_recursive("user://GamePad/Styleboxes")
+	if error != OK and not directory.dir_exists("user://GamePad/Styleboxes"):
+		push_error("Could not create the temporary stylebox directory; using the default style.")
+		return fallback.duplicate()
+
+	var path = "user://GamePad/Styleboxes/TEMP_FILE.tres"
 	var tres_file = File.new()
-	var error = tres_file.open(path, File.WRITE)
-	if error == OK:
-		tres_file.store_string(stylebox_info)
+	error = tres_file.open(path, File.WRITE)
+	if error != OK:
+		push_error("Could not save the custom stylebox; using the default style.")
+		return fallback.duplicate()
+
+	tres_file.store_string(stylebox_info)
+	var write_error = tres_file.get_error()
 	tres_file.close()
-	
-	return load(path).duplicate()
+	if write_error != OK:
+		push_error("Could not save the custom stylebox; using the default style.")
+		return fallback.duplicate()
+
+	var stylebox = ResourceLoader.load(path, "", true)
+	if not (stylebox is StyleBoxFlat):
+		push_error("Could not load the custom StyleBoxFlat; using the default style.")
+		return fallback.duplicate()
+
+	return stylebox.duplicate()

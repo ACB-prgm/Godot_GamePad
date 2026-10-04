@@ -22,6 +22,7 @@ func get_server_ip():
 func stop_broadcast():
 #	print('stopping UDP Broadcast')
 	set_process(false)
+	udp_connected = false
 
 
 func _process(_delta):
